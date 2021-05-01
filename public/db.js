@@ -3,7 +3,7 @@ let db;
 // We request a database instance 'budget'
 const request = window.indexedDB.open('budget', 1);
 
-// 
+// (request.onupgradeneeded)
 request.onupgradeneeded = function (event) {
     console.log('Upgrade needed in IndexDB');
 
@@ -18,3 +18,18 @@ request.onupgradeneeded = function (event) {
         db.createObjectStore('BudgetStore', { autoIncrement: true });
     }
 };
+
+request.onerror = function (event) {
+    console.log
+}
+
+// (request.onerror)
+
+
+// (function checkDatabase)
+
+
+// (request.onsuccess)
+
+
+// (const saveRecord)
