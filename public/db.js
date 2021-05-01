@@ -42,20 +42,27 @@ function checkDatabase() {
                     'Content-Type': 'application/json',
                 },
             })
-            .then((response) => response.json())
-            .then((res) => {
-                if(res.length !== 0) {
-                    transaction = db.transaction.objectStore('BudgetStore');
+                .then((response) => response.json())
+                .then((res) => {
+                    if (res.length !== 0) {
+                        transaction = db.transaction.objectStore('BudgetStore');
 
-                    currentStore.clear();
-                    console.log('Clearing the current store!');
-                }
-            });
-            }
+                        currentStore.clear();
+                        console.log('Clearing the current store!');
+                    }
+                });
+        }
     };
 }
 
 // (request.onsuccess)
+request.onsuccess = function (event) {
+    db = event.target.result;
 
+    if (navigator.onLine) {
+        console.log('The backend is online!');
+        checkDatabase();
+    }
+};
 
 // (const saveRecord)
