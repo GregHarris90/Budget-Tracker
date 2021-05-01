@@ -36,6 +36,12 @@
 
 - The user can also remove items by plugging in the matching information and pressing 'subtract funds.'
 
+*PWA-NOTE*
+
+- This web application is also fully functional "offline," to test this simply go into airplane mode or disconnect from the internet while using it and notice how it still works. 
+
+- Then once the internet is turned back on the user's data is then updated.
+
 ### Main-Application
 
 *IMAGES BELOW*
@@ -54,4 +60,4 @@
 
 # Conclusion
 
-- Overall...
+- Overall this assignment was fairly straight forward, the biggest difficulty was understanding what we being asked of us and what I needed to add to the provided code to make it an official "progressive web application." I believe I was able to achieve that goal and have a decent understanding of what these concepts mean and how to implement them. 
