@@ -75,3 +75,4 @@ const saveRecord = (record) => {
     store.add(record);
 };
 
+window.addEventListener('online', checkDatabase);
