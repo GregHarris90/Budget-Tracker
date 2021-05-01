@@ -28,7 +28,7 @@ request.onerror = function (event) {
 function checkDatabase() {
     let transaction = db.transaction(['BudgetStore'], 'readwrite');
 
-    const store = transaction.object.Store('BudgetStore');
+    const store = transaction.objectStore('BudgetStore');
 
     const getAll = store.getAll();
 
