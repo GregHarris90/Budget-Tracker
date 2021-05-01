@@ -1,6 +1,6 @@
 let db;
 
-// We request a database instance 'budget'
+// We request a database instance for 'budget'
 const request = window.indexedDB.open('budget', 1);
 
 // (request.onupgradeneeded)
@@ -19,15 +19,41 @@ request.onupgradeneeded = function (event) {
     }
 };
 
-request.onerror = function (event) {
-    console.log
-}
-
 // (request.onerror)
-
+request.onerror = function (event) {
+    console.log(`Error! ${event.target.errorCode}`);
+};
 
 // (function checkDatabase)
+function checkDatabase() {
+    let transaction = db.transaction(['BudgetStore'], 'readwrite');
 
+    const store = transaction.object.Store('BudgetStore');
+
+    const getAll = store.getAll();
+
+    getAll.onsuccess = function () {
+        if (getAll.result.length > 0) {
+            fetch('/api/transaction/bulk', {
+                method: 'POST',
+                body: JSON.stringify(getAll.result),
+                headers: {
+                    Accept: 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then((response) => response.json())
+            .then((res) => {
+                if(res.length !== 0) {
+                    transaction = db.transaction.objectStore('BudgetStore');
+
+                    currentStore.clear();
+                    console.log('Clearing the current store!');
+                }
+            });
+            }
+    };
+}
 
 // (request.onsuccess)
 
