@@ -66,3 +66,12 @@ request.onsuccess = function (event) {
 };
 
 // (const saveRecord)
+const saveRecord = (record) => {
+
+    const transaction = db.transaction(['BudgetStore'], 'readwrite');
+
+    const store = transaction.objectStore('BudgetStore');
+
+    store.add(record);
+};
+
