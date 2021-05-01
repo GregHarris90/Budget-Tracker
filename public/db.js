@@ -3,7 +3,7 @@ let db;
 // We request a database instance for 'budget'
 const request = window.indexedDB.open('budget', 1);
 
-// (request.onupgradeneeded)
+// "request.onupgradeneeded"
 request.onupgradeneeded = function (event) {
     console.log('Upgrade needed in IndexDB');
 
@@ -19,12 +19,12 @@ request.onupgradeneeded = function (event) {
     }
 };
 
-// (request.onerror)
+// "request.onerror"
 request.onerror = function (event) {
     console.log(`Error! ${event.target.errorCode}`);
 };
 
-// (function checkDatabase)
+// "function checkDatabase"
 function checkDatabase() {
     let transaction = db.transaction(['BudgetStore'], 'readwrite');
 
@@ -55,7 +55,7 @@ function checkDatabase() {
     };
 }
 
-// (request.onsuccess)
+// "request.onsuccess"
 request.onsuccess = function (event) {
     db = event.target.result;
 
@@ -65,7 +65,7 @@ request.onsuccess = function (event) {
     }
 };
 
-// (const saveRecord)
+// "const saveRecord"
 const saveRecord = (record) => {
 
     const transaction = db.transaction(['BudgetStore'], 'readwrite');
@@ -75,4 +75,5 @@ const saveRecord = (record) => {
     store.add(record);
 };
 
+// Event Listener checks for app coming online
 window.addEventListener('online', checkDatabase);
