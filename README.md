@@ -13,8 +13,9 @@
 
 - This repository is for a web application that allows the user to track their spending and manage their budget.
 
-*LINK TO DEMO VIDEO*
+*LINK TO LIVE WEB APPLICATION*
 
+https://afternoon-thicket-37659.herokuapp.com/
 
 # Technology-Used
 
